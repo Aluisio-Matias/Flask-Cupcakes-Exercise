@@ -3,14 +3,16 @@ const BASE_URL = "http://localhost:5000/api";
 
 function generateCupcakeHTML(cupcake) {
     return `
-      <div data-cupcake-id=${cupcake.id}>
-        <li>
-          ${cupcake.flavor} / ${cupcake.size} / ${cupcake.rating}
-          <button class="delete-button">X</button>
-        </li>
-        <img class="Cupcake-img"
+      <div class="row" data-cupcake-id=${cupcake.id}>
+      <div class="col-4 my-2">
+        <b>
+          Flavor: ${cupcake.flavor} / Size: ${cupcake.size} / Rating: ${cupcake.rating}
+          <button class="delete-button btn btn-danger btn-sm">X</button>
+        </b>
+        <img class="img-thumbnail"
               src="${cupcake.image}"
               alt="(no image provided)">
+              </div>
       </div>
     `;
 }

@@ -1,6 +1,7 @@
 """Flask app for Cupcakes"""
 
 from flask import Flask, render_template, redirect, flash, jsonify, request
+from flask_cors import cross_origin
 # from flask_debugtoolbar import DebugToolbarExtension
 
 from models import db, connect_db, Cupcake
@@ -32,10 +33,12 @@ def root():
 
 
 @app.route('/api/cupcakes')
+@cross_origin()
 def list_cupcakes():
     '''Returns JSON with all the cupcakes'''
 
     cupcakes = [cupcake.serialize() for cupcake in Cupcake.query.all()]
+
     return jsonify(cupcakes=cupcakes)
 
 
